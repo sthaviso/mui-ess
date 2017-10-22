@@ -13,13 +13,16 @@ body {
 }
 
 .convList {
-  width: 40vw;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-right-color: grey;
+  width: 30vw;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+
   height: 100vh;
 }
 
+.convListHeader {
+  width: 40vw;
+  min-width: 40vw;
+}
 .listTimeStamp {
   float: right;
   font-size: 14px;
@@ -42,4 +45,32 @@ body {
 
 .test {
   padding-left: 40vw
+}
+
+.bubble{
+    background-color: #F2F2A3;
+    border-radius: 10px;
+    box-shadow: 0px 0px 6px #B2B2B2;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+.sideList {
+  position: fixed;
+  width: 40vw;
+  height:100vh;
+  left: 61px;
+  right: 0;
+  overflow-y: scroll;
+  top: 60px;
+}
+
+.chatRoom {
+  margin: 60px 0 0 250px;
+  padding: 0 30px;
+  overflow-y: scroll;
+  position: fixed;
+  left: 200px;
+  top: 0px;
+  height:100vh;
 }

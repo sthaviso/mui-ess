@@ -14,11 +14,11 @@ const styles = theme => ({
 });
 
 let Settings = ({dispatch, classes}) => (
-  <div style={{ textAlign: 'center' }}>
+  <div style={{ textAlign: 'center', height: "100vh" }}>
     <Button
       raised
-      className={classes.button}>
-      onTouchTap={() => dispatch(seedFirebase())}
+      className={classes.button}
+      onClick={() => dispatch(seedFirebase())}>
         Seed Firebase
     </Button>
 

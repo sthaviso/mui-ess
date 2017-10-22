@@ -4,6 +4,7 @@ import List, {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
+  ListSubheader
 } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import SimpleMenu from './SimpleMenu';
@@ -12,40 +13,32 @@ import TimeAgo from 'react-timeago';
 import engStrings from 'react-timeago/lib/language-strings/en-short.js'
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
 import { withTheme } from 'material-ui/styles';
-
+import Divider from 'material-ui/Divider';
 const formatter = buildFormatter(engStrings)
 
 
 
 
-const styles = {
+const styles = (theme) => ({
   smallAvatar: {
     width: 20,
     height: 20,
     fontSize: 10,
-    display: "flex",
-    position: "relative",
-    overflow: "hidden",
-    flexShrink: 0,
-    fontFamily: "Roboto",
-    alignItems: "center",
-    userSelect: "none",
-    borderRadius: "50%",
-    justifyContent: "center",
-    color: "#fafafa",
-    backgroundColor: "rgb(185, 185, 185)",
   },
   selectedListItem: {
-    backgroundColor: "#FFF9C4",
+    backgroundColor: theme.palette.primary[50],
     '&:hover': {
-      background: "#FFF9C4"
+      background: theme.palette.primary[50]
     }
+  },
+  subheader: {
+    backgroundColor: 'white'
   }
-};
+});
 
 const ConvList = ({tickets, selectedIndex, onRequestChange, users, classes, theme}) => (
-  <div className="convList">
-    <List>
+    <List subheader={<ListSubheader className={classes.subheader}>Inbox</ListSubheader>}>
+      <Divider/>
       {tickets.map((ticket, index) => {
               let user = users[ticket.createdBy];
               return (
@@ -68,7 +61,7 @@ const ConvList = ({tickets, selectedIndex, onRequestChange, users, classes, them
                     secondary={<span>
                                     {ticket.text}
                                     <span className="listTimeStamp" >
-                                      <span className={classes.smallAvatar}>{ticket.unreadMessagesCount}</span>
+                                      <Avatar className={classes.smallAvatar} component="span">{ticket.unreadMessagesCount}</Avatar>
                                     </span>
                                   </span>}
                   />
@@ -77,10 +70,8 @@ const ConvList = ({tickets, selectedIndex, onRequestChange, users, classes, them
                   </ListItemSecondaryAction>
                 </ListItem>);
               })}
+
     </List>
-
-
-  </div>
 );
 
 export default  withTheme()(withStyles(styles)(ConvList));

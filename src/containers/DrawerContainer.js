@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ConvDrawer from '../components/ConvDrawer';
 import { clickIconMenu } from '../actions/index';
+import { withRouter} from 'react-router-dom';
 
 class DrawerContainer extends Component
 {
@@ -19,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
   toggleDrawer: () => (dispatch(clickIconMenu()))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DrawerContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DrawerContainer));
